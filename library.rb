@@ -3,12 +3,10 @@ class Library
     @books = []
   end
 
-  def books (title, author)
-    books = {:title => author}
-  end
-
   def list_books
-    
+    @books.each do |book| 
+      puts "Book Title:  #{book.title} , Book Author: #{book.author}"
+    end
   end
 
   def borrowed_books
