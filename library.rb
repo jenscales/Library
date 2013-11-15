@@ -1,8 +1,10 @@
+#This creates a Library with books.  Empty first. Add books with add_book method
 class Library
   def initialize
     @books = []
   end
 
+  #This will list out all books in the Library
   def list_books
     @books.each do |book| 
       puts "Book Title:  #{book.title} , Book Author: #{book.author}"
@@ -15,11 +17,12 @@ class Library
   def available_books
   end
 
-
+  #This will add a new book into the Library
   def add_book(book)
     @books << book
   end
 
+  #This process will check if the user can borrow a book.
   def check_out(user, book)
     if user.borrowed_books.length == 2
       return "Sorry, that user already has two books checked out"
@@ -38,6 +41,7 @@ class Library
   def check_in(book)
   end
 end
+
 
 class Borrower
   def initialize(name)
