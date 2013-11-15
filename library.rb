@@ -10,9 +10,8 @@ class Library
   end
 
   def borrowed_books
-
   end
-
+  
   def available_books
   end
 
@@ -29,8 +28,10 @@ class Library
     if book.status == "available"
       book.borrower = user
       book.status = "checked out"
+      user.borrow_book(book)
+      puts "Great, you just checked out a book: #{book.title}"
     else
-      return "Sorry, this book is checked out!"
+      puts "Sorry, this book is checked out!"
     end
   end
 
@@ -46,8 +47,12 @@ class Borrower
   end
 
   def borrowed_books
-
+    @books
   end
+
+  def borrow_book(book)
+    @books << book
+  end 
 
   def name
   end
