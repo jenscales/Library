@@ -23,7 +23,16 @@ class Library
   end
 
   def check_out(user, book)
+    if user.borrowed_books.length == 2
+      return "Sorry, that user already has two book checked out"
+    end
 
+    if book.status == "available"
+      book.borrower = user
+      book.status = "checked out"
+    else
+      return "Sorry, this book is checked out!"
+    end
   end
 
   def check_in(book)
@@ -33,6 +42,7 @@ end
 class Borrower
   def initialize(name)
     @name = name
+    @books = []
     puts "Welcome new borrower #{name} to the Library"
   end
 
@@ -51,10 +61,13 @@ class Borrower
 end
 
 class Book
+  #attr_reader :title, :author
   def initialize(title, author)
     @title = title
     @author = author
     puts "You have just added a new book: #{title} : #{author}."
+    @status = 'available'
+    @borrower = nil
   end
 
   def title
@@ -64,4 +77,21 @@ class Book
   def author
     @author
   end
+
+  def status
+    @status
+  end
+
+  def status= (new_value)
+    @status = new_value
+  end
+
+  def borrower
+    @borrower
+  end
+
+  def borrower= (new_value)
+    @borrower = new_value 
+  end
+
 end
