@@ -19,12 +19,11 @@ class Library
 
   def add_book(book)
     @books << book
-    
   end
 
   def check_out(user, book)
     if user.borrowed_books.length == 2
-      return "Sorry, that user already has two book checked out"
+      return "Sorry, that user already has two books checked out"
     end
 
     if book.status == "available"
@@ -95,3 +94,5 @@ class Book
   end
 
 end
+
+
