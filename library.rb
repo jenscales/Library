@@ -7,7 +7,7 @@ class Library
   #This will list out all books in the Library
   def list_books
     @books.each do |book| 
-      puts "Book Title:  #{book.title} , Book Author: #{book.author}"
+      puts "Book Title:  #{book.title}, Book Author: #{book.author}"
     end
   end
 
@@ -32,6 +32,7 @@ class Library
   #This will add a new book into the Library
   def add_book(book)
     @books << book
+    puts "We have just added the following NEW book '#{book.title}' to the Library"
   end
 
   #This process will check if the user can borrow a book.
@@ -51,7 +52,15 @@ class Library
   end
 
   def check_in(book)
+    if book.status == "checked out"
+      book.borrower = user
+      book.status = "available"
+      puts "Thank you for returning the book: #{book.title}"
+    else
+      puts "This book does not belong in this library. We already have a copy. Thanks!"
+    end
   end
+
 end
 
 
