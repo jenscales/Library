@@ -4,7 +4,7 @@ class Library
     @books = []
   end
 
-  #This will list out all books in the Library
+  #This will list out all books in the Library by Title, Author and Status
   def list_books
     @books.each do |book| 
       puts "Book Title:  #{book.title}, Book Author: #{book.author}, Book Status: #{book.status}"
@@ -47,7 +47,7 @@ class Library
       user.borrow_book(book)
       puts "Great, you just checked out a book: #{book.title}"
     else
-      puts "Sorry, this book is checked out!"
+      puts "Sorry, this book #{book.title} is checked out!"
     end
   end
 
@@ -58,7 +58,7 @@ class Library
 
     if book.status == "checked out"
       book.status = "available"
-      user.borrowed_books.delete(book)
+      user.borrow_book.delete(book)
       puts "Thank you for returning the #{book} today! Come again."
     end
   end
@@ -86,9 +86,13 @@ class Borrower
   end
 
   def borrowed_books_count
+    books.length
   end
 
   def borrowed_books_list
+    @books.each do |book|
+        puts  "#{book.title} by #{book.author}"
+    end
   end
 end
 
