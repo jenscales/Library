@@ -12,9 +12,16 @@ class Library
   end
 
   def borrowed_books
+
   end
   
+  # This will print what books are currently available for checkout
   def available_books
+    @books.each do |book|
+      if book.status == 'available'
+        puts "This book #{book.title} is available today!"
+      end  
+    end
   end
 
   #This will add a new book into the Library
@@ -25,7 +32,7 @@ class Library
   #This process will check if the user can borrow a book.
   def check_out(user, book)
     if user.borrowed_books.length == 2
-      return "Sorry, that user already has two books checked out"
+      return "Sorry, that user #{user} already has two books checked out."
     end
 
     if book.status == "available"
