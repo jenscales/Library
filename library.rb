@@ -12,14 +12,19 @@ class Library
   end
 
   def borrowed_books
-
+    @books.each do |book|
+      if book.status == 'checked out'
+        puts "Sorry, This book #{book.title} is not available today!"
+        puts "The following borrower: #{book.borrower.name} has this book checked out"
+      end
+    end
   end
   
   # This will print what books are currently available for checkout
   def available_books
     @books.each do |book|
       if book.status == 'available'
-        puts "This book #{book.title} is available today!"
+        puts "Good News! This book #{book.title} is available today!"
       end  
     end
   end
@@ -66,6 +71,7 @@ class Borrower
   end 
 
   def name
+    @name
   end
 
   def borrowed_books_count
