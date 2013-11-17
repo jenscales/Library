@@ -1,4 +1,4 @@
-#This creates a Library with books.  Empty first. Add books with add_book method
+#This creates a Library with books.  Library is empty first. Add books with add_book method
 class Library
   def initialize
     @books = []
@@ -11,6 +11,7 @@ class Library
     end
   end
 
+  #This checks a books status and if it is checked out will return the borrower's name and book title.
   def borrowed_books
     @books.each do |book|
       if book.status == 'checked out'
@@ -35,7 +36,7 @@ class Library
     puts "We have just added the following NEW book '#{book.title}' to the Library"
   end
 
-  #This process will check if the user can borrow a book.
+  #This will check if the user can borrow a book.
   def check_out(user, book)
     if user.borrowed_books.length == 2
       return "Sorry, that user #{user} already has two books checked out."
@@ -51,6 +52,7 @@ class Library
     end
   end
 
+  #This will check in a book back to the Library
   def check_in(book)
     if book.status == "available"
       return "Uh oh! This book does not belong to this library. Thanks, but we already have a copy available"
@@ -65,30 +67,30 @@ class Library
 
 end
 
-
+#This creates a new borrower. Assigns books as empty. Assigns name. Welcomes borrower to library.
 class Borrower
   def initialize(name)
     @name = name
     @books = []
     puts "Welcome new borrower #{name} to the Library"
   end
-
+  #This shows what books the borrower currently has.
   def borrowed_books
     @books
   end
-
+  #This will add a book to the borrower's account.
   def borrow_book(book)
     @books << book
   end 
-
+  #This creates a variable name for the borrower's name.  
   def name
     @name
   end
-
+  #This sets and prints the books currently borrowed by the user.
   def borrowed_books_count
     books.length
   end
-
+  #This prints out the title and author of each book the borrower has.
   def borrowed_books_list
     @books.each do |book|
         puts  "#{book.title} by #{book.author}"
