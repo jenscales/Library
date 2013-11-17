@@ -8,7 +8,7 @@ class Library
   #This will list out all books in the Library by Title, Author and Status
   def list_books
     @books.each do |book| 
-      puts "Book Title:  #{book.title}, Book Author: #{book.author}, Book Status: #{book.status}"
+      puts "Book Title: #{book.title}, Book Author: #{book.author}, Book Status: #{book.status}"
     end
   end
 
@@ -141,7 +141,8 @@ class Book
   def borrower= (new_value)
     @borrower = new_value 
   end
-
+#This is the end of the Book class
 end
 
+#This is the end of the entire Library Program.  :o)
 
