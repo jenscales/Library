@@ -46,9 +46,9 @@ class Library
       book.borrower = user
       book.status = "checked out"
       user.borrow_book(book)
-      puts "Great, you just checked out a book: #{book.title}"
+      puts "Great #{book.borrower.name}, you just checked out a book: #{book.title}"
     else
-      puts "Sorry, this book #{book.title} is checked out!"
+      puts "Sorry #{book.borrower.name}, this book #{book.title} is checked out!"
     end
   end
 
@@ -59,9 +59,9 @@ class Library
     end
 
     if book.status == "checked out"
-      book.status = "available"
-      user.borrow_book.delete(book)
       puts "Thank you for returning the #{book} today! Come again."
+      user.borrow_book.delete(book)
+      book.status = "available"
     end
   end
 
@@ -93,7 +93,7 @@ class Borrower
   #This prints out the title and author of each book the borrower has.
   def borrowed_books_list
     @books.each do |book|
-        puts  "#{book.title} by #{book.author}"
+        puts  "This book is checked out: #{book.title} by #{book.author}"
     end
   end
 end
